@@ -57,7 +57,7 @@ And that's it! Tooltip and Target also come with a few configuration options:
 
 **TooltipTarget**
 
-0. `type`: Indicates what kind of action will trigger the tooltip. One of `TooltipTarget.TYPE.HOVER`, `TooltipTarget.TYPE.CLICK`, or `TooltipTarget.TYPE.BOTH`.
+0. `type`: Indicates what kind of action will trigger the tooltip. One of `TooltipTarget.TYPE.HOVER`, `TooltipTarget.TYPE.CLICK`, `TooltipTarget.TYPE.FOCUS`, or `TooltipTarget.TYPE.ALL`. Defaults to `TooltipTarget.TYPE.HOVER`.
 
 ### Modal
 Much like the tooltip, you need to plug in the reducer. Be sure that the reducer is named `widgets` in the store.
