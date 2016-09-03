@@ -95,7 +95,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var TARGET_TYPES = {
 	  HOVER: 'hover',
 	  CLICK: 'click',
-	  BOTH: 'both'
+	  FOCUS: 'focus',
+	  ALL: 'all'
 	};
 
 	var DEFAULT_OFFSET = 16;
@@ -335,7 +336,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function _Tooltip() {
 	    _classCallCheck(this, _Tooltip);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(_Tooltip).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (_Tooltip.__proto__ || Object.getPrototypeOf(_Tooltip)).apply(this, arguments));
 	  }
 
 	  _createClass(_Tooltip, [{
@@ -401,7 +402,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _inherits(_TooltipTarget, _React$Component2);
 
 	  function _TooltipTarget() {
-	    var _Object$getPrototypeO;
+	    var _ref;
 
 	    var _temp, _this2, _ret2;
 
@@ -411,7 +412,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      args[_key] = arguments[_key];
 	    }
 
-	    return _ret2 = (_temp = (_this2 = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(_TooltipTarget)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this2), _this2.handleOpenTooltip = function (e) {
+	    return _ret2 = (_temp = (_this2 = _possibleConstructorReturn(this, (_ref = _TooltipTarget.__proto__ || Object.getPrototypeOf(_TooltipTarget)).call.apply(_ref, [this].concat(args))), _this2), _this2.handleOpenTooltip = function (e) {
 	      e.stopPropagation();
 	      e.nativeEvent.stopImmediatePropagation();
 	      _this2.props.onToggleTooltip(e.currentTarget);
@@ -437,26 +438,30 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return {
 	          onClick: this.handleOpenTooltip
 	        };
-	      } else {
-	        var _ret3 = function () {
-	          var keepOpen = false;
-
-	          return {
-	            v: {
-	              onMouseEnter: _this3.handleOpenTooltip,
-	              onMouseLeave: function onMouseLeave(e) {
-	                if (!keepOpen) _this3.handleCloseTooltip(e);
-	              },
-	              onClick: function onClick(e) {
-	                keepOpen = true;
-	                _this3.handleOpenTooltip(e);
-	              }
-	            }
-	          };
-	        }();
-
-	        if ((typeof _ret3 === 'undefined' ? 'undefined' : _typeof(_ret3)) === "object") return _ret3.v;
+	      } else if (type === TARGET_TYPES.FOCUS) {
+	        return {
+	          onFocus: this.handleOpenTooltip,
+	          onBlur: this.handleCloseTooltip
+	        };
 	      }
+
+	      var keepOpen = false;
+	      var closeIfNotKeptOpen = function closeIfNotKeptOpen(e) {
+	        if (!keepOpen) {
+	          _this3.handleCloseTooltip(e);
+	        }
+	      };
+
+	      return {
+	        onMouseEnter: this.handleOpenTooltip,
+	        onMouseLeave: closeIfNotKeptOpen,
+	        onClick: function onClick(e) {
+	          keepOpen = true;
+	          _this3.handleOpenTooltip(e);
+	        },
+	        onFocus: this.handleOpenTooltip,
+	        onBlur: closeIfNotKeptOpen
+	      };
 	    }
 	  }, {
 	    key: 'render',
@@ -490,9 +495,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _inherits(_TooltipShutter, _React$Component3);
 
 	  function _TooltipShutter() {
-	    var _Object$getPrototypeO2;
+	    var _ref2;
 
-	    var _temp2, _this4, _ret4;
+	    var _temp2, _this4, _ret3;
 
 	    _classCallCheck(this, _TooltipShutter);
 
@@ -500,11 +505,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      args[_key2] = arguments[_key2];
 	    }
 
-	    return _ret4 = (_temp2 = (_this4 = _possibleConstructorReturn(this, (_Object$getPrototypeO2 = Object.getPrototypeOf(_TooltipShutter)).call.apply(_Object$getPrototypeO2, [this].concat(args))), _this4), _this4.handleClick = function (e) {
+	    return _ret3 = (_temp2 = (_this4 = _possibleConstructorReturn(this, (_ref2 = _TooltipShutter.__proto__ || Object.getPrototypeOf(_TooltipShutter)).call.apply(_ref2, [this].concat(args))), _this4), _this4.handleClick = function (e) {
 	      if (_this4.props.tooltipId) {
 	        _this4.props.onToggleTooltip(null);
 	      }
-	    }, _temp2), _possibleConstructorReturn(_this4, _ret4);
+	    }, _temp2), _possibleConstructorReturn(_this4, _ret3);
 	  }
 
 	  _createClass(_TooltipShutter, [{

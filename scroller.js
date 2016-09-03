@@ -105,7 +105,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function Scroller(props) {
 	    _classCallCheck(this, Scroller);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Scroller).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (Scroller.__proto__ || Object.getPrototypeOf(Scroller)).call(this, props));
 
 	    _this._resetValues = function () {
 	      _this.setState({

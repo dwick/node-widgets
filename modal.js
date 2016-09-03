@@ -109,7 +109,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function _Modal() {
 	    _classCallCheck(this, _Modal);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(_Modal).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (_Modal.__proto__ || Object.getPrototypeOf(_Modal)).apply(this, arguments));
 	  }
 
 	  _createClass(_Modal, [{
@@ -162,7 +162,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function _ModalTarget() {
 	    _classCallCheck(this, _ModalTarget);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(_ModalTarget).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (_ModalTarget.__proto__ || Object.getPrototypeOf(_ModalTarget)).apply(this, arguments));
 	  }
 
 	  _createClass(_ModalTarget, [{
