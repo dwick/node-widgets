@@ -358,7 +358,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          'div',
 	          {
 	            className: className,
-	            style: STYLE,
+	            style: !className && STYLE,
 	            ref: function ref(x) {
 	              realAlignment = positionTooltip(x, target, alignment, offset);
 	            },
@@ -366,11 +366,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	              return e.stopPropagation();
 	            }
 	          },
-	          _react2.default.createElement('div', { className: className + '__arrowBorder' }),
 	          _react2.default.createElement('div', { className: className + '__arrow' }),
 	          _react2.default.createElement(
 	            'div',
-	            { style: { width: '100%', height: '100%', overflowY: 'auto', overflowX: 'auto' } },
+	            { className: className + '__content', style: { width: '100%', height: '100%', overflowY: 'auto', overflowX: 'auto' } },
 	            children
 	          )
 	        );
