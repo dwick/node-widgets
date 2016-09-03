@@ -358,7 +358,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	          'div',
 	          {
 	            className: className,
-	            style: !className && STYLE,
 	            ref: function ref(x) {
 	              realAlignment = positionTooltip(x, target, alignment, offset);
 	            },
